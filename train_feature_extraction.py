@@ -7,35 +7,32 @@ import time
 
 nb_classes = 43
 
-# TODO: Load traffic signs data.
+# Load traffic signs data.
 with open("./train.p", mode='rb') as f:
     data = pickle.load(f)
 
-# TODO: Split data into training and validation sets.
+# Split data into training and validation sets.
 X_train, X_val, y_train, y_val = train_test_split(data['features'], data['labels'], test_size=0.33, random_state=0)
 
-# TODO: Define placeholders and resize operation.
+# Define placeholders and resize operation.
 x = tf.placeholder(tf.float32, (None, 32, 32, 3))
 resized = tf.image.resize_images(x, [227, 227])
 labels = tf.placeholder(tf.int64, None)
 
-# TODO: pass placeholder as first argument to `AlexNet`.
+# placeholder as first argument to `AlexNet`.
 fc7 = AlexNet(resized, feature_extract=True)
 # NOTE: `tf.stop_gradient` prevents the gradient from flowing backwards
 # past this point, keeping the weights before and up to `fc7` frozen.
 # This also makes training faster, less work to do!
 fc7 = tf.stop_gradient(fc7)
  
-# TODO: Add the final layer for traffic sign classification.
+# Add the final layer for traffic sign classification.
 shape = (fc7.get_shape().as_list()[-1], nb_classes)
 fc8W = tf.Variable(tf.truncated_normal(shape, stddev=1e-2))
 fc8b = tf.Variable(tf.zeros(nb_classes))
 logits = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
 
 
-# TODO: Define loss, training, accuracy operations.
-# HINT: Look back at your traffic signs project solution, you may
-# be able to reuse some the code.
 BATCH_SIZE = 128
 EPOCHS = 10
 
@@ -45,7 +42,7 @@ optimizer = tf.train.AdamOptimizer()
 training_operation = optimizer.minimize(loss_operation, var_list=[fc8W, fc8b])
 init_op = tf.initialize_all_variables()
 
-# TODO: Train and evaluate the feature extraction model.
+# Train and evaluate the feature extraction model.
 correct_prediction = tf.equal(tf.arg_max(logits, 1), labels)
 accuracy_operation = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 saver = tf.train.Saver()
