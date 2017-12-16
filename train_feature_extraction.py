@@ -78,7 +78,7 @@ with tf.Session() as sess:
         validation_accuracy = evaluate(X_val, y_val)
         print("EPOCH {} ...".format(i + 1))
         print("Time: %.3f seconds" % (time.time() - t0))
-        print("Validation Accuracy: {:.3f}".fomrat(validation_accuracy))
+        print("Validation Accuracy: {:.3f}".format(validation_accuracy))
         print()
     saver.save(sess, './_transfer_learning_traffic_sign_classifier')
     print("Model saved")
