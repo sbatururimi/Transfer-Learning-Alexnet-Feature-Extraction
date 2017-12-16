@@ -32,7 +32,7 @@ python imagenet_inference.py
 
 This is called feature extraction, because we're basically extracting the image features inferred by the penultimate layer, and passing these features to a new classification layer.
 
-_Notes_ 
+#### Notes
 That being said, the output classes you see should be present in signnames.csv.
 
 * **train_feature_extraction.py** training the new classification layer. This was done on a Amazon GPU instance and you can find the already trained model in this repository.
