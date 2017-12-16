@@ -43,8 +43,11 @@ That being said, the output classes you see should be present in signnames.csv.
 This lab utilizes:
 
 An implementation of AlexNet created by [Michael Guerzhoy and Davi Frossard](http://www.cs.toronto.edu/~guerzhoy/tf_alexnet/)
+
 AlexNet weights provided by the [Berkeley Vision and Learning Center](http://bvlc.eecs.berkeley.edu/)
+
 Training data from the [German Traffic Sign Recognition Benchmark](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news)
+
 AlexNet was originally trained on the [ImageNet database](http://www.image-net.org/).
 
 
